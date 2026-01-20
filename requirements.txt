@@ -5,3 +5,8 @@ seaborn
 scikit-learn
 uvicorn
 fastapi
+kaggle
+ipykernel
+python-dotenv
+jinja2
+streamlit
