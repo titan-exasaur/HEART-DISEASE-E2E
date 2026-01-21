@@ -3,9 +3,9 @@ import yaml
 import subprocess
 import pandas as pd
 from pathlib import Path
-from dotenv import load_dotenv
-
 from logger import logger
+from dotenv import load_dotenv
+from utils import load_safe_yaml
 
 # ------------------------------------------------------------------
 # Environment setup
@@ -51,8 +51,7 @@ def load_schema(schema_path: Path = SCHEMA_PATH) -> dict:
     if not schema_path.exists():
         raise FileNotFoundError(f"Schema file not found: {schema_path}")
 
-    with open(schema_path, "r") as file:
-        return yaml.safe_load(file)
+    return load_safe_yaml(schema_path)
 
 # ------------------------------------------------------------------
 # Data Loading

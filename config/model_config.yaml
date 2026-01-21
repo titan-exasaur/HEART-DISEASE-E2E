@@ -1,0 +1,8 @@
+model:
+  name: LogisticRegression
+
+params:
+  max_iter: 1500
+  test_size: 0.2
+  random_state: 40
+  shuffle: True
