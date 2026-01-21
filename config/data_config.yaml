@@ -1,0 +1,66 @@
+dataset:
+  name: Heart_Disease_Prediction
+  row_count: 270
+
+columns:
+  Age:
+    dtype: int
+    nullable: false
+
+  Sex:
+    dtype: int
+    nullable: false
+    allowed_values: [0, 1]
+
+  Chest pain type:
+    dtype: int
+    nullable: false
+
+  BP:
+    dtype: int
+    nullable: false
+
+  Cholesterol:
+    dtype: int
+    nullable: false
+
+  FBS over 120:
+    dtype: int
+    nullable: false
+    allowed_values: [0, 1]
+
+  EKG results:
+    dtype: int
+    nullable: false
+
+  Max HR:
+    dtype: int
+    nullable: false
+
+  Exercise angina:
+    dtype: int
+    nullable: false
+    allowed_values: [0, 1]
+
+  ST depression:
+    dtype: float
+    nullable: false
+
+  Slope of ST:
+    dtype: int
+    nullable: false
+
+  Number of vessels fluro:
+    dtype: int
+    nullable: false
+    min: 0
+    max: 4
+
+  Thallium:
+    dtype: int
+    nullable: false
+
+  Heart Disease:
+    dtype: category
+    nullable: false
+    allowed_values: ["Presence", "Absence"]

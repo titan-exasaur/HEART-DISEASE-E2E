@@ -1,3 +1,4 @@
 /heart-venv
 .env
 .env.*
+/notebooks

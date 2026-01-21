@@ -10,3 +10,4 @@ ipykernel
 python-dotenv
 jinja2
 streamlit
+PyYAML
