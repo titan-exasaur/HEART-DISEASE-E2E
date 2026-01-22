@@ -74,7 +74,32 @@ interface, and is designed to be production-ready.
 
 ------------------------------------------------------------------------
 
-## ✅ Status
+## 🐳 Dockerization
 
-The project is complete and ready for containerization and cloud
-deployment.
+The complete Heart Disease Detection application has been **Dockerized** to ensure consistent execution across environments and simplify deployment.
+
+### 📦 Docker Image Build
+The Docker image was built from the project root directory using:
+
+```bash
+docker build -t titanexasaur/heart .
+```
+
+### ▶️ Running the Docker Container
+The container is run by mapping the internal application port to the host machine:
+
+```bash
+docker run -p 8888:8888 titanexasaur/heart
+```
+
+Once the container is running, the application can be accessed at:
+
+```
+http://localhost:8888
+```
+
+### 🚀 Benefits of Dockerization
+- Environment consistency  
+- Easy deployment to AWS or any cloud platform  
+- No dependency conflicts  
+- Simplified setup and scaling  
