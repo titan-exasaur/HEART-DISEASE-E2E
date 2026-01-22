@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Heart Disease Detection</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            background: #ffffff;
+            width: 560px;
+            padding: 30px 35px;
+            border-radius: 12px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 25px;
+            color: #333;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 600;
+            color: #444;
+        }
+
+        input[type="number"] {
+            width: 100%;
+            padding: 10px 12px;
+            margin-bottom: 18px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            font-size: 14px;
+        }
+
+        input[type="number"]:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 2px rgba(102, 126, 234, 0.2);
+        }
+
+        /* 🔥 RADIO BUTTON STYLING */
+        .radio-group {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 18px;
+            flex-wrap: wrap;
+        }
+
+        .radio-group input[type="radio"] {
+            display: none;
+        }
+
+        .radio-group label {
+            padding: 8px 16px;
+            border: 1px solid #ccc;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            background: #f8f9ff;
+            transition: all 0.2s ease;
+        }
+
+        .radio-group input[type="radio"]:checked + label {
+            background: #667eea;
+            color: white;
+            border-color: #667eea;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.1s;
+        }
+
+        button:hover {
+            background: #5a67d8;
+        }
+
+        button:active {
+            transform: scale(0.98);
+        }
+
+        .prediction {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 6px;
+            background: #f0f4ff;
+            color: #333;
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>Heart Disease Detection</h1>
+
+    <form action="/predict" method="post">
+
+        <label>Age</label>
+        <input type="number" name="age" min="1" max="120" required>
+
+        <label>Sex</label>
+        <div class="radio-group">
+            <input type="radio" id="male" name="sex" value="1" required>
+            <label for="male">Male</label>
+
+            <input type="radio" id="female" name="sex" value="0">
+            <label for="female">Female</label>
+        </div>
+
+        <label>Chest Pain Type</label>
+        <div class="radio-group">
+            <input type="radio" id="cp1" name="chest_pain_type" value="1" required>
+            <label for="cp1">Type 1</label>
+
+            <input type="radio" id="cp2" name="chest_pain_type" value="2">
+            <label for="cp2">Type 2</label>
+
+            <input type="radio" id="cp3" name="chest_pain_type" value="3">
+            <label for="cp3">Type 3</label>
+
+            <input type="radio" id="cp4" name="chest_pain_type" value="4">
+            <label for="cp4">Type 4</label>
+        </div>
+
+        <label>Resting Blood Pressure (mm Hg)</label>
+        <input type="number" name="bp" min="1" max="200" required>
+
+        <label>Serum Cholesterol (mg/dl)</label>
+        <input type="number" name="cholesterol" min="1" max="600" required>
+
+        <label>Fasting Blood Sugar > 120</label>
+        <div class="radio-group">
+            <input type="radio" id="fbs_yes" name="fbs_over_120" value="1" required>
+            <label for="fbs_yes">Yes</label>
+
+            <input type="radio" id="fbs_no" name="fbs_over_120" value="0">
+            <label for="fbs_no">No</label>
+        </div>
+
+        <label>Resting ECG Results</label>
+        <div class="radio-group">
+            <input type="radio" id="ekg0" name="ekg_results" value="0" required>
+            <label for="ekg0">Normal</label>
+
+            <input type="radio" id="ekg1" name="ekg_results" value="1">
+            <label for="ekg1">ST-T abnormality</label>
+
+            <input type="radio" id="ekg2" name="ekg_results" value="2">
+            <label for="ekg2">LV Hypertrophy</label>
+        </div>
+
+        <label>Maximum Heart Rate Achieved</label>
+        <input type="number" name="max_hr" min="1" max="250" required>
+
+        <label>Exercise Induced Angina</label>
+        <div class="radio-group">
+            <input type="radio" id="ex_yes" name="exercise_angina" value="1" required>
+            <label for="ex_yes">Yes</label>
+
+            <input type="radio" id="ex_no" name="exercise_angina" value="0">
+            <label for="ex_no">No</label>
+        </div>
+
+        <label>ST Depression</label>
+        <input type="number" step="0.1" name="st_depression" min="0" max="10" required>
+
+        <label>Slope of ST Segment</label>
+        <div class="radio-group">
+            <input type="radio" id="slope1" name="slope_of_st" value="1" required>
+            <label for="slope1">Upsloping</label>
+
+            <input type="radio" id="slope2" name="slope_of_st" value="2">
+            <label for="slope2">Flat</label>
+
+            <input type="radio" id="slope3" name="slope_of_st" value="3">
+            <label for="slope3">Downsloping</label>
+        </div>
+
+        <label>Number of Major Vessels</label>
+        <div class="radio-group">
+            <input type="radio" id="v0" name="number_of_vessels" value="0" required>
+            <label for="v0">0</label>
+
+            <input type="radio" id="v1" name="number_of_vessels" value="1">
+            <label for="v1">1</label>
+
+            <input type="radio" id="v2" name="number_of_vessels" value="2">
+            <label for="v2">2</label>
+
+            <input type="radio" id="v3" name="number_of_vessels" value="3">
+            <label for="v3">3</label>
+        </div>
+
+        <label>Thallium Stress Test</label>
+        <div class="radio-group">
+            <input type="radio" id="thal3" name="thallium" value="3" required>
+            <label for="thal3">Normal</label>
+
+            <input type="radio" id="thal6" name="thallium" value="6">
+            <label for="thal6">Fixed Defect</label>
+
+            <input type="radio" id="thal7" name="thallium" value="7">
+            <label for="thal7">Reversible Defect</label>
+        </div>
+
+        <button type="submit">Predict</button>
+    </form>
+
+    {% if prediction %}
+        <div class="prediction">
+            Prediction Result: {{ prediction }}
+        </div>
+    {% endif %}
+</div>
+
+</body>
+</html>

@@ -11,3 +11,4 @@ python-dotenv
 jinja2
 streamlit
 PyYAML
+python-multipart

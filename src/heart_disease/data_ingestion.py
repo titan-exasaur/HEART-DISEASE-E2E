@@ -3,8 +3,8 @@ import yaml
 import subprocess
 import pandas as pd
 from pathlib import Path
-from logger import logger
 from dotenv import load_dotenv
+from logger import logger
 from utils import load_safe_yaml
 
 # ------------------------------------------------------------------

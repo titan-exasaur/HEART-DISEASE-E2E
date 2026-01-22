@@ -2,8 +2,8 @@ import os
 import joblib
 import numpy as np
 import pandas as pd
-from logger import logger
 from pathlib import Path
+from logger import logger
 from utils import load_safe_yaml
 from sklearn.linear_model import LogisticRegression
 
