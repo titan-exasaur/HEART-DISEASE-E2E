@@ -103,3 +103,9 @@ http://localhost:8888
 - Easy deployment to AWS or any cloud platform  
 - No dependency conflicts  
 - Simplified setup and scaling  
+
+## Preview of Application
+
+![Heart Disease Detection UI](artifacts/heart.png)
+
+available to use [here](http://51.20.7.103:8888/)

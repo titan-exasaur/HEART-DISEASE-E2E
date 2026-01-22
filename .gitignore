@@ -2,3 +2,4 @@
 .env
 .env.*
 /notebooks
+heart-e2e.pem
